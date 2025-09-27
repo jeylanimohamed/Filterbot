@@ -21,7 +21,71 @@ BANNED_WORDS = {"fuck", "shit", "bitch", "bastard", "asshole", "dick", "pussy",
 
 # Words/phrases that would otherwise trip substring matches (e.g., place names).
 ALLOW_LIST ={
-    "assistant", "scunthorpe", "cocktail", "passionate", "analysis"
+    # A
+    "able", "accept", "accomplish", "active", "admire", "advance", "affection", "agree",
+    "amazing", "angel", "appreciate", "art", "assist", "athlete",
+    # B
+    "balance", "balloon", "beautiful", "believe", "benefit", "best", "bless", "brave",
+    "brilliant", "buddy",
+    # C
+    "calm", "care", "celebrate", "charm", "cheer", "clarity", "class", "clean",
+    "comfort", "compassion", "confident", "courage", "create", "crystal",
+    # D
+    "dance", "dazzle", "delight", "devoted", "diamond", "dream", "driven",
+    # E
+    "earnest", "easy", "educate", "efficient", "effort", "embrace", "enjoy",
+    "enlighten", "enthusiasm", "excellent", "explore",
+    # F
+    "fair", "faith", "fame", "fantastic", "fashion", "fearless", "fine", "flourish",
+    "flower", "focus", "freedom", "friend", "fun", "future",
+    # G
+    "gain", "generous", "genius", "gift", "glad", "glow", "goal", "good", "grace",
+    "great", "growth", "guardian",
+    # H
+    "harmony", "happy", "heal", "heart", "hero", "hope", "hug", "humble", "humor",
+    # I
+    "idea", "ideal", "imagine", "improve", "independent", "inspire", "intelligent",
+    "invent", "invincible", "joy",
+    # J
+    "jewel", "jolly", "journey", "joyful", "justice",
+    # K
+    "keen", "kind", "kiss", "knowledge",
+    # L
+    "laugh", "learn", "legend", "light", "live", "love", "loyal", "lucky",
+    # M
+    "magic", "magnificent", "marvel", "master", "meaning", "merit", "miracle",
+    "motivate", "music",
+    # N
+    "noble", "nice", "nurture", "nutrition",
+    # O
+    "okay", "open", "optimistic", "opportunity", "original", "outstanding",
+    # P
+    "paradise", "passion", "peace", "perfect", "phenomenal", "pleasure", "positive",
+    "power", "praise", "precious", "pride", "progress", "pure",
+    # Q
+    "quality", "queen", "quest", "quick", "quiet",
+    # R
+    "radiant", "rare", "real", "refresh", "rejoice", "relax", "respect", "reward",
+    "right", "rose",
+    # S
+    "safe", "satisfy", "school", "score", "secure", "serene", "shine", "simple",
+    "skill", "smart", "smile", "soul", "spark", "special", "spirit", "star",
+    "strength", "success", "sun", "support", "sweet",
+    # T
+    "talent", "team", "thankful", "thrill", "together", "tranquil", "treasure",
+    "true", "trust",
+    # U
+    "ultimate", "unique", "unity", "unite", "uplift", "useful",
+    # V
+    "value", "victory", "virtue", "vision", "vital", "vivacious",
+    # W
+    "warm", "wealth", "welcome", "well", "whole", "win", "wisdom", "wonder",
+    # X
+    "xenial", "x-factor" ,  # (friendly/positive)
+    # Y
+    "yearn", "yes", "youth", "yummy",
+    # Z
+    "zeal", "zen", "zest", "zillion"
     # e.g., "scunthorpe", "assistant"
 }
 
@@ -44,6 +108,16 @@ LEET_MAP = {
     "0": "o", "°":"o","ó":"o","ö":"o","ò":"o","ô":"o","õ":"o",
     "$": "s", "5":"s", "§":"s",
     "7": "t", "+":"t",
+     "£": "l", "¡": "i", "ï": "i", "ł": "l",
+    "¢": "c", "ç": "c",
+    "§": "s", "š": "s",
+    "µ": "m",
+    "Ð": "d",
+    "þ": "p",
+    "¥": "y",
+    "κ": "k", "к": "k", "Κ": "k",  # Greek/cyrillic homoglyphs
+    "ρ": "p", "р": "r", "Р": "r",
+    "а": "a", "А": "a"  # Cyrillic a looks like Latin a
 }
 
 NON_LETTER = rx.compile(r"[^a-z]")
@@ -97,7 +171,7 @@ def is_banned(norm: str) -> bool:
   for w in BANNED_WORDS:
     # Check similarity (0–100)
     score = fuzz.ratio(norm, w)
-    if score >= 85:  # tweak threshold: 80–90 works well
+    if score >= 65:  # tweak threshold: 80–90 works well
       return True
   return False
 
