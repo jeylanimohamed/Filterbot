@@ -15,7 +15,7 @@ BYPASS_ROLE_IDS = set()        # e.g., {987654321098765432}
 # Keep this list private and curated. Include base forms only (lowercase, no accents).
 # TIP: Split into categories; keep the absolute worst terms here to avoid false positives.
 BANNED_WORDS = {"fuck", "shit", "bitch", "bastard", "asshole", "dick", "pussy",
-    "cock", "cunt", "slut", "whore", "adih", "coochie", "vagina", "clit", "effing"
+    "cock", "cunt", "slut", "whore", "adih", "coochie", "vagina", "clit", "effing", "nigga"
     # examples (do not include here in public code): "word1", "word2", ...
 }
 
