@@ -15,7 +15,7 @@ BYPASS_ROLE_IDS = set()        # e.g., {987654321098765432}
 # Keep this list private and curated. Include base forms only (lowercase, no accents).
 # TIP: Split into categories; keep the absolute worst terms here to avoid false positives.
 BANNED_WORDS = {"fuck", "shit", "bitch", "bastard", "asshole", "dick", "pussy",
-    "cock", "cunt", "slut", "whore", "adih", "coochie", "vagina", "clit", "effing", "nigga"
+    "cock", "cunt", "slut", "whore", "adih", "coochie", "vagina", "clit", "effing", "nigga", "🥷", "neeger", "kneeger"
     # examples (do not include here in public code): "word1", "word2", ...
 }
 
@@ -97,7 +97,7 @@ def is_banned(norm: str) -> bool:
   for w in BANNED_WORDS:
     # Check similarity (0–100)
     score = fuzz.ratio(norm, w)
-    if score >= 75:  # tweak threshold: 80–90 works well
+    if score >= 85:  # tweak threshold: 80–90 works well
       return True
   return False
 
